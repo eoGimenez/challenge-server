@@ -1,27 +1,29 @@
-const multer = require('multer');
-const path = require('path');
+// al final decidi usar Cloudinary para que no se almacene todo en el back-end y quede todo mas organizado
 
-const storage = multer.diskStorage({
-	destination: './files/images',
-	imagename: (req, file, cb) => {
-		cb(null, `${Date.now()} - ${file.originalname}`);
-	},
-});
+// const multer = require('multer');
+// const path = require('path');
 
-const upload = multer({
-	storage,
-	limits: {
-		fileSize: 1024 * 1024 * 5,
-	},
-	fileFilter: (req, file, cb) => {
-		const typeAcceptes = /svg|png|jpeg|jpg/;
-		const fileExt = path.extname(file.originalname).toLocaleLowerCase();
-		if (typeAcceptes.test(fileExt)) {
-			cd(null, true);
-		} else {
-			cd(new Error('File type doesnt supported, please use: .svg, .png, .jpeg, .jpg'));
-		}
-	},
-});
+// const storage = multer.diskStorage({
+// 	destination: './files/images',
+// 	imagename: (req, file, cb) => {
+// 		cb(null, `${Date.now()} - ${file.originalname}`);
+// 	},
+// });
 
-module.exports = upload;
+// const upload = multer({
+// 	storage,
+// 	limits: {
+// 		fileSize: 1024 * 1024 * 5,
+// 	},
+// 	fileFilter: (req, file, cb) => {
+// 		const typeAcceptes = /svg|png|jpeg|jpg/;
+// 		const fileExt = path.extname(file.originalname).toLocaleLowerCase();
+// 		if (typeAcceptes.test(fileExt)) {
+// 			cd(null, true);
+// 		} else {
+// 			cd(new Error('File type doesnt supported, please use: .svg, .png, .jpeg, .jpg'));
+// 		}
+// 	},
+// });
+
+// module.exports = upload;
