@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 module.exports = (app) => {
 	app.set('trust proxy', 1);
 
-	const FRONT_END_LOCAL = process.env.ORIGIN_LOCAL;
+	const FRONT_END_LOCAL = process.env.ORIGIN_LOCAL || 'http://localhost:3000';
 
 	app.use(
 		cors({
