@@ -10,10 +10,13 @@ router.post('/upload', uploadHandler.single('image'), (req, res, next) => {
 	console.log(req.file.path);
 	Image.create({ path: req.file.path })
 		.then((result) => {
-			const path = result.path;
-			res.json(path);
+			res.status(201).json(result.path);
 		})
-		.catch((err) => new Error('Something went wrong with Data Base, please try again !'));
+		.catch((err) =>
+			res
+				.status(500)
+				.json({ message: 'Something went wrong with Data Base, please try again !' })
+		);
 });
 
 module.exports = router;
